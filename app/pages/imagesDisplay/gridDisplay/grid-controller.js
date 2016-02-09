@@ -26,8 +26,8 @@ angular.module('imagesDisplay.grid', ['ngResource', 'ui.bootstrap'])
       });
   })
 
-  .controller('GridCtrl', ['$scope', 'photos_API', function ($scope, photos_API) {
-    $scope.imgs =  photos_API.query();
+  .controller('GridCtrl', ['$scope', 'photosapi', function ($scope, photosapi) {
+    $scope.imgs =  photosapi.query();
   }]);
 
 

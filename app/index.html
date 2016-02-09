@@ -6,66 +6,58 @@
     <meta name="description" content="Online presentation of skills, and mastered technologies by the Web Developer Roland Oben">
     <meta name="keywords" content="Roland, Oben,  developer, portfolio robenit, Obenit Applications">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+      <!-- ***************************************************************************************************-->
+      <!-- ***************************************** loader spinner ******************************************-->
+      <!--<script src="shared/libraries/heartcode-canvasloader-min-0.9.1.js"></script>-->
+      <!--<div class="spinnerContainer" style="position: absolute; top: 48%; left:48%; z-index: 1000;"><span id="loading"></span></div>  &lt;!&ndash; Loading spinner &ndash;&gt;-->
+      <!--<script type="text/javascript">-->
+          <!--var cl = new CanvasLoader('loading');-->
+          <!--cl.setColor('#7f6300'); // default is '#000000'-->
+          <!--cl.setDiameter(90); // default is 40-->
+          <!--cl.setDensity(12); // default is 40-->
+          <!--cl.setRange(0.7); // default is 1.3-->
+          <!--cl.setSpeed(1); // default is 2-->
+          <!--cl.setFPS(30); // default is 24-->
+          <!--cl.show(); // Hidden by default-->
+      <!--</script>-->
+      <!-- ***************************************** loader spinner  end *************************************-->
+      <!-- ***************************************************************************************************-->
+
+
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.min.css">
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script|Josefin+Slab:400,700|Marmelad|Marvel:400,700italic' rel='stylesheet' type='text/css'>
   </head>
   <body  ng-app="rolandApp" ng-controller="RootCtrl">
+    <div class="processLoaderContainer">
+        <div class="outerProcessLoader"></div>
+        <div class="innerProcessLoader"></div>
+    </div>
+
+
     <div id="roldal"> </div>
     <div id="roldal_over"></div>
-    <div class="spinnerContainer"><span id="loading"></span></div>  <!-- Loading spinner -->
+    <!--<div class="spinnerContainer"><span id="loading"></span></div>  &lt;!&ndash; Loading spinner &ndash;&gt;-->
+
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <!--<div class="container">-->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Header Start ++++++++ -->
+    <div class="row header">
+      <div ng-include src="'index_templates/header_tpl.html'"></div>
+    </div>
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Header End ++++++++ -->
 
-
-
-    <div class="row header"> <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Header Start ++++++++ -->
-      <div id="navbarLine" class="horizontalNavBar col-md-12 navbar navbar-default" role="navigation">
-        <span ng-click="toggleSideMenu()" class="bolderArrow">&#8656; </span> <span class="hiddenPanelIndicator" ng-click="toggleSideMenu()">  Extra <br/> Menu </span>
-        <!--<div class="spinnerContainer"><span id="loading"></span></div>  &lt;!&ndash; Loading spinner &ndash;&gt;-->
-        <div ng-click="toggleDemoMenu()" class="demoMenu">
-          <img src="images/demos.png" alt="Menu widget"/>
-        </div>
-
-        <div class="currentPage" ng-cloak>{{currentPage | currentPageMobileTextFilter}}</div>
-
-        <div ng-click="toggleMenu()" class="mobileMainMenu">
-          <img src="images/menu_widget.png" alt="Menu widget"/>
-        </div>
-
-            <ul active-tog class="nav navbar-nav">
-              <li ng-click="clearMenu()" ng-class="{customActive: isActive('/')}"><a href="#/">Home</a></li>
-              <li ng-click="clearMenu()" ng-class="{customActive: isActive('/about')}"><a ng-href="#/about">About</a></li>
-              <li ng-click="clearMenu()" ng-class="{
-                                customActive: isActive('/skills') ||
-                                isActive('/skills/pieChart') ||
-                                isActive('/skills/barChart') ||
-                                isActive('/skills/lineGraph') ||
-                                isActive('/skills/histogram') ||
-                                isActive('/skills-imageDisplay-stacked') ||
-                                isActive('/skills-imageDisplay-grid')
-                  }"><a ng-href="#/skills">Skills</a></li>
-              <li ng-click="clearMenu()" ng-class="{customActive: isActive('/projects')}"><a ng-href="#/projects">Projects</a></li>
-              <li ng-click="clearMenu()" ng-class="{customActive: isActive('/contact')}"><a ng-href="#/contact">Contact</a></li>
-            </ul>
-
-      </div>
-    </div>  <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Header End ++++++++ -->
-
-
-    <!--***************************  CENTRAL DISPLAY  ***************************-->
-
+    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CENTRAL DISPLAY +++++-->
       <div class="row centralDisplayBox">
         <div class="genGradientLeft"></div> <div class="genGradientRight"></div>
         <div class="col-md-12">
@@ -73,7 +65,7 @@
             <a ng-href="#/">
               <div class="logoClickArea"></div>
             </a>
-              <img class="logo" ng-src="images/logo.png" alt="Personal logo" />
+            <img class="logo" ng-src="images/logo.png" alt="Personal logo" />
 
             <div class="vertNav"  ui-view="siteRoot"></div>
           </div>
@@ -82,19 +74,17 @@
         </div>
       </div><!-- CENTRALDISPLAYBOX END -->
 
-    <!--*********************************  CENTRAL DISPLAY END *********************-->
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CENTRAL DISPLAY END ++-->
 
-    <!-- FOOTER START -->
-    <div class="row mainFooter"> <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Footer Start ++++++++ -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Footer Start ++++++++ -->
+    <div class="row mainFooter">
       <div class="col-md-12">
         <p class="mainFooterCopyRight">
           <span class="glyphicon glyphicon-registration-mark"></span> Copyright  ObenIT App Inc.
         </p>
       </div>
-    </div><!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ FOOTER End ++++++++ -->
-    <!-- FOOTER END -->
-
-
+    </div>
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ FOOTER End ++++++++ -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -107,6 +97,7 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -124,12 +115,14 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="shared/libraries/heartcode-canvasloader-min-0.9.1.js"></script>
+
     <script src="pages/imagesDisplay/stackedDisplay/pagination.js"></script>
     <script src="pages/imagesDisplay/stackedDisplay/stacked-controller.js"></script>
     <script src="pages/imagesDisplay/gridDisplay/grid-controller.js"></script>
+    <script src="shared/libraries/heartcode-canvasloader-min-0.9.1.js"></script>
     <script src="shared/services/photos-factory-service.js"></script>
     <script src="shared/services/layOutService.js"></script>
+    <script src="shared/filters/wordreverse.js"></script>
     <script src="pages/imagesDisplay/stackedDisplay/services/textModifier-filter-service.js"></script>
     <script src="pages/imagesDisplay/gridDisplay/directives/grid_display-directive.js"></script>
     <script src="pages/imagesDisplay/gridDisplay/directives/grid_custom_modal-directive.js"></script>
@@ -153,16 +146,6 @@
     <script src="pages/mainPages/mainPages-app.js"></script>
     <script src="pages/imagesDisplay/imagesDisplay-app.js"></script>
     <!-- endbuild -->
-  <script type="text/javascript">
-    var cl = new CanvasLoader('loading');
-    cl.setColor('#7f6300'); // default is '#000000'
-    cl.setDiameter(90); // default is 40
-    cl.setDensity(12); // default is 40
-    cl.setRange(0.7); // default is 1.3
-    cl.setSpeed(1); // default is 2
-    cl.setFPS(30); // default is 24
-    cl.show(); // Hidden by default
-  </script>
 
 </body>
 </html>

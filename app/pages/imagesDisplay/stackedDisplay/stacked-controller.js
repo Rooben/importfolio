@@ -26,8 +26,8 @@ angular.module('imagesDisplay.stacked', ['angularUtils.directives.dirPagination'
     });
   })
 
-  .controller('StackedCtrl', ['$scope', 'photos_API', function ($scope, photos_API) {
-      photos_API.query().$promise.then(
+  .controller('StackedCtrl', ['$scope', 'photosapi', function ($scope, photosapi) {
+      photosapi.query().$promise.then(
         function(data){
           $scope.flickArray = data;
         },

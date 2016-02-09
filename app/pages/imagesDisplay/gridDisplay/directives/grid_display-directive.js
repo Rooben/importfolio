@@ -8,7 +8,7 @@
  * Directive of the rolandApp
  */
 angular.module('imagesDisplay.grid')
-  .directive("imgDisplay", function(photos_API){
+  .directive("imgDisplay", function(photosapi){
     return {
       restrict: 'EA',
       replace: true,
@@ -22,7 +22,7 @@ angular.module('imagesDisplay.grid')
       },
 
       link: function(scope){
-        photos_API.query(function(data){
+        photosapi.query(function(data){
           scope.imgs = data;
         }, function(error){
           console.log(error);

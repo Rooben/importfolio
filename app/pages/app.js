@@ -13,16 +13,17 @@ angular
     'ngResource',
     'ui.router',
     'rolandApp.mainPages',
-    'rolandApp.imagesDisplay'
+    'rolandApp.imagesDisplay',
+    'mainPages.filterModule'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
   })
 
   .run(function($rootScope){
-    $(document).ready(function(){
+    $(function(){
       //Elements to be hidden before the app starts.
-      $('.spinnerContainer').hide();
+      $('.processLoaderContainer').hide();
     });
 
     $rootScope.$on('$stateChangeStart', function(){
@@ -45,6 +46,26 @@ angular
       return route === $location.path();
     };
 
+    $scope.selectActive = function(){
+      var url = $location.path();
+      switch(url){
+        case '/skills': return true;
+          break;
+        case '/skills/pieChart': return true;
+          break;
+        case '/skills/barChart': return true;
+          break;
+        case '/skills/lineGraph': return true;
+          break;
+        case '/skills/histogram': return true;
+          break;
+        case '/skills-imageDisplay-stacked': return true;
+          break;
+        case '/skills-imageDisplay-grid': return true;
+          break;
+      }
+    };
+
     $scope.isActive = function(route) { //used to print out which page user is currently on (devices less than 768)
       if(route === $location.path()){
         myPortfolio.page =  route.substring(1, route.length).toUpperCase(); //Give me the current page in caps.
@@ -60,7 +81,7 @@ angular
 
 
     $(document).ready(function(){
-      $('#loading').hide();      //Stop the spinner once the the DOM is ready.
+      //$('#loading').hide();      //Stop the spinner once the the DOM is ready.
       //$(window).bind('resize', function() { location.reload(); });
       window.onorientationchange = function(){ //This is only for the home page animation. A change from portrait to landscape should reload the page.
         var orientation = window.orientation;
